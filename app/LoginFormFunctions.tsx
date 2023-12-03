@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Config from "react-native-config";
+
 
 export async function validateLogin(props: any, username: string, password: string) {
   if (username === '' || password === '') {
@@ -6,7 +8,7 @@ export async function validateLogin(props: any, username: string, password: stri
     return;
   }
   const user_data = await axios
-    .get('http://172.30.204.8:9132/validateLogIn', {
+    .get('http://192.168.1.76:9132/validateLogIn', {
       params: {
         username: username,
         password: password,
@@ -19,9 +21,9 @@ export async function validateLogin(props: any, username: string, password: stri
         // Handle any errors that occur 
         console.error(error); 
     }); 
-//   if (user_data.length === 0) {
-//     alert('Invalid login or password');
-//     return;
-//   }
-  console.log('success')
+  if (user_data.length === 0) {
+    alert('Invalid login or password');
+    return;
+  }
+  props.onFormSwitch('booking');
 }
