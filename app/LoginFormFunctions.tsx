@@ -1,4 +1,5 @@
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Config from "react-native-config";
 
 
@@ -25,5 +26,18 @@ export async function validateLogin(props: any, username: string, password: stri
     alert('Invalid login or password');
     return;
   }
+  await AsyncStorage.setItem(
+    'username',
+    user_data[0]['username'],
+  );
+  await AsyncStorage.setItem(
+    'name',
+    user_data[0]['name'],
+  );
+  await AsyncStorage.setItem(
+    'surname',
+    user_data[0]['surname'],
+  );
+
   props.onFormSwitch('booking');
 }
