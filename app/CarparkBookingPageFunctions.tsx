@@ -5,6 +5,8 @@ export function LogOutUser(props: any) {
   }
 
 export async function GetUserData(setUserData: any) {
-  const username = await AsyncStorage.getItem('username');
-  setUserData(username);
+  const name = await AsyncStorage.getItem('name');
+  const surname = await AsyncStorage.getItem('surname');
+  const userIdentity = name + " " + surname;
+  setUserData(userIdentity);
 }

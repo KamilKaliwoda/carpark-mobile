@@ -14,30 +14,47 @@ export const styles = StyleSheet.create({
     },
     BookingHeader: {
         backgroundColor: 'darkmagenta',
-        height: '20%',
+        height: '15%',
         width: '100%',
         marginTop: '10%',
     },
     BookingInfoSection: {
-        height: '50%',
+        flex: 1,
+        height: '70%',
         width: '100%',
-        backgroundColor: 'green',
+        backgroundColor: 'darkorchid',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    LogoutButtonSection: {
+        alignItems: 'center',
         justifyContent: 'center',
+        height: '100%',
+        width: '50%',
     },
     LogoutButtonBackground: {
         backgroundColor: 'white',
-        borderRadius: 10,
+        borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
         height: '50%',
-        width: '50%'
+        width: '80%',
     },
     BookingUserInfo: {
         alignItems: 'center',
         justifyContent: 'center',
         width: '50%',
         fontSize: 20,
-        color: 'white'
+        color: 'white',
+        textAlign: 'center'
+    },
+    BookingDatepickerSection: {
+        height: '30%',
+        width: '100%',
+        backgroundColor: 'darkorchid',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     LoginForm: {
         flexDirection: 'column',
