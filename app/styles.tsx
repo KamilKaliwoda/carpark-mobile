@@ -90,5 +90,22 @@ export const styles = StyleSheet.create({
         color: 'purple',
         fontSize: 20,
     },
+    BookingContent: {
+        backgroundColor: 'darkmagenta',
+        width: '90%',
+        borderColor: 'darkmagenta',
+        borderRadius: 10,
+        padding: 10,
+        borderWidth: 10,
+    },
+    text: {
+        fontSize: 40,
+    },
+    BookingContentSection: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '70%',
+        marginTop: '5%',
+    },
   });
   

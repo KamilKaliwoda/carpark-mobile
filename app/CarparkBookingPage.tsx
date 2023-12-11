@@ -1,5 +1,6 @@
-import { Text, View, TextInput, TouchableOpacity, Appearance } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Appearance, ScrollView } from 'react-native';
 import { LogOutUser, GetUserData } from './CarparkBookingPageFunctions';
+import { BookingContent } from './BookingContent';
 import { styles } from './styles';
 import { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -15,8 +16,8 @@ export const CarparkBookingPage = (props: any): JSX.Element => {
     const start_date = new Date();
     const max_date = new Date();
     max_date.setDate(max_date.getDate() + 14);
-    const old_date = new Date();
-    old_date.setDate(old_date.getDate() - 14);
+    const oldDate = new Date();
+    oldDate.setDate(oldDate.getDate() - 14);
 
     const onChange = (event, selectedDate) => {
         setDate(selectedDate);
@@ -29,6 +30,7 @@ export const CarparkBookingPage = (props: any): JSX.Element => {
             showDatepicker(true);
             }, 10);
     }
+
 
     return (
         <View style={styles.BookingView}>
@@ -53,6 +55,9 @@ export const CarparkBookingPage = (props: any): JSX.Element => {
                     />
                 )}
                 </View>
+            </View>
+            <View style={styles.BookingContentSection}>
+                <BookingContent selectedDate={selectedDate}/>
             </View>
         </View>
     );
