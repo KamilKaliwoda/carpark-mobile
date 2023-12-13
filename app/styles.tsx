@@ -90,14 +90,6 @@ export const styles = StyleSheet.create({
         color: 'purple',
         fontSize: 20,
     },
-    BookingContent: {
-        backgroundColor: 'darkmagenta',
-        width: '90%',
-        borderColor: 'darkmagenta',
-        borderRadius: 10,
-        padding: 10,
-        borderWidth: 10,
-    },
     text: {
         fontSize: 40,
     },
@@ -105,7 +97,66 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         height: '70%',
+        width: '100%',
         marginTop: '5%',
+    },
+    BookingContent: {
+        flexGrow: 1,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'darkmagenta',
+        borderColor: 'darkmagenta',
+        borderRadius: 10,
+        padding: 10,
+        borderWidth: 10,
+        flexDirection: 'column',
+        flexWrap: 'wrap',
+        alignItems: 'stretch',
+        rowGap: '15%',
+        columnGap: '15%',
+    },
+    ParkingSpaceFree: {
+        height: '30%',     
+        width: '30%', 
+        borderWidth: 5,
+        backgroundColor: 'green',    
+    },
+    ParkingSpaceBusy: {
+        height: '30%',     
+        width: '30%', 
+        backgroundColor: 'red', 
+        borderWidth: 5,
+
+    },
+    SpaceNumber: {
+        fontSize: 20,
+        color: 'black',
+    },
+    BookingButton: {
+        backgroundColor: 'white',
+        height: '30%', 
+        width: '80%',
+    },
+    ReleaseButton: {
+        backgroundColor: 'white',
+        height: '30%', 
+        width: '80%',
+    },
+    BookingButtonText: {
+        fontSize: 20,
+        color: 'black',
+    },
+    ReleaseButtonText: {
+        fontSize: 20,
+        color: 'black',
+    },
+    Name: {
+        fontSize: 20,
+        color: 'black',
+    },
+    Surname: {
+        fontSize: 20,
+        color: 'black',
     },
   });
   

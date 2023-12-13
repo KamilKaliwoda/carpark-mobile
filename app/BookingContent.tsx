@@ -1,5 +1,6 @@
 import { Text, View, TextInput, TouchableOpacity, Appearance, ScrollView } from 'react-native';
 import { getBookingData } from './BookingContentFunctions';
+import { ParkingSpaceFree, ParkingSpaceBusy } from './ParkingSpace';
 import { styles } from './styles';
 import { useState, useEffect } from 'react';
 
@@ -10,6 +11,10 @@ export const BookingContent = (props: any): JSX.Element => {
     const year = datetimeFormat.getFullYear().toString();
     const dateFormat = `${year}-${month}-${day}`;
     const [bookingData, setBookingData] = useState<Array<any> | null>(null);
+
+    const refreshStatus = (): void => {
+      props.refreshData();
+    };
 
     useEffect(() => {
         getBookingData(dateFormat)
@@ -26,5 +31,44 @@ export const BookingContent = (props: any): JSX.Element => {
         return <Text>Loading...</Text>;
       }
 
-    return <ScrollView style={styles.BookingContent}></ScrollView>
+    const children: Array<JSX.Element> = [];
+  let isAlreadyBooked = false;
+  bookingData.forEach((element) => {
+    if (element['username'] === props.currentUsername) {
+      isAlreadyBooked = true;
+    }
+  });
+  let releaseAllowed = false;
+  bookingData.forEach((element) => {
+    if (element['username'] === null) {
+      children.push(
+        <ParkingSpaceFree
+          key={element['space_number']}
+          space_number={element['space_number']}
+          date_format={dateFormat}
+          isAlreadyBooked={isAlreadyBooked}
+          refreshStatus={refreshStatus}
+        />,
+      );
+    } else {
+      if (element['username'] === props.currentUsername) {
+        releaseAllowed = true;
+      } else {
+        releaseAllowed = false;
+      }
+      children.push(
+        <ParkingSpaceBusy
+          key={element['space_number']}
+          space_number={element['space_number']}
+          date_format={dateFormat}
+          name={element['name']}
+          surname={element['surname']}
+          releaseAllowed={releaseAllowed}
+          refreshStatus={refreshStatus}
+        />,
+      );
+    }
+  });
+
+    return <ScrollView contentContainerStyle={styles.BookingContent}>{children}</ScrollView>
 }

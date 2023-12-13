@@ -1,0 +1,45 @@
+import { Text, View, TextInput, TouchableOpacity, Appearance, ScrollView } from 'react-native';
+import { styles } from './styles';
+import { SelectSpaceNumber, ReleaseSpaceNumber } from './ParkingSpaceFunctions';
+
+export const ParkingSpaceFree = (props: any): JSX.Element => {
+    if (props.isAlreadyBooked) {
+      return (
+        <View style={styles.ParkingSpaceFree}>
+            <Text style={styles.SpaceNumber}>{props.space_number}</Text>
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.ParkingSpaceFree}>
+            <Text style={styles.SpaceNumber}>{props.space_number}</Text>
+            <TouchableOpacity style={styles.BookingButton} onPress={() => SelectSpaceNumber(props)}>
+                <Text style={styles.BookingButtonText}>Book</Text>
+            </TouchableOpacity>
+        </View>
+      );
+    }
+  };
+  
+  export const ParkingSpaceBusy = (props: any): JSX.Element => {
+    if (props.releaseAllowed) {
+      return (
+        <View style={styles.ParkingSpaceBusy}>
+            <Text style={styles.SpaceNumber}>{props.space_number}</Text>
+            <Text style={styles.Name}>{props.name}</Text>
+            <Text style={styles.Surname}>{props.surname}</Text>
+            <TouchableOpacity style={styles.ReleaseButton} onPress={() => ReleaseSpaceNumber(props)}>
+                <Text style={styles.ReleaseButtonText}>Release</Text>
+            </TouchableOpacity>
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.ParkingSpaceBusy}>
+            <Text style={styles.SpaceNumber}>{props.space_number}</Text>
+            <Text style={styles.Name}>{props.name}</Text>
+            <Text style={styles.Surname}>{props.surname}</Text>
+        </View>
+      );
+    }
+  };
