@@ -1,4 +1,4 @@
-import { Text, View, TextInput, TouchableOpacity, Appearance, ScrollView } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Appearance, ScrollView, Dimensions } from 'react-native';
 import { getBookingData } from './BookingContentFunctions';
 import { ParkingSpaceFree, ParkingSpaceBusy } from './ParkingSpace';
 import { styles } from './styles';
@@ -11,6 +11,8 @@ export const BookingContent = (props: any): JSX.Element => {
     const year = datetimeFormat.getFullYear().toString();
     const dateFormat = `${year}-${month}-${day}`;
     const [bookingData, setBookingData] = useState<Array<any> | null>(null);
+
+	const spaceHeight = Dimensions.get('window').height * 0.2;
 
     const refreshStatus = (): void => {
       props.refreshData();
@@ -49,6 +51,7 @@ export const BookingContent = (props: any): JSX.Element => {
           date_format={dateFormat}
           isAlreadyBooked={isAlreadyBooked}
           refreshStatus={refreshStatus}
+		  height={spaceHeight}
         />,
       );
     } else {
@@ -66,10 +69,12 @@ export const BookingContent = (props: any): JSX.Element => {
           surname={element['surname']}
           releaseAllowed={releaseAllowed}
           refreshStatus={refreshStatus}
+		  height={spaceHeight}
         />,
       );
     }
   });
+  
 
     return <View style={styles.BookingContentContainer}>
 		<View style={styles.BookingContentContainerDeeper}>
