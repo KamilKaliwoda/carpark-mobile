@@ -31,7 +31,8 @@ export const BookingContent = (props: any): JSX.Element => {
         return <Text>Loading...</Text>;
       }
 
-    const children: Array<JSX.Element> = [];
+    const freeSpaces: Array<JSX.Element> = [];
+    const busySpaces: Array<JSX.Element> = [];
   let isAlreadyBooked = false;
   bookingData.forEach((element) => {
     if (element['username'] === props.currentUsername) {
@@ -41,7 +42,7 @@ export const BookingContent = (props: any): JSX.Element => {
   let releaseAllowed = false;
   bookingData.forEach((element) => {
     if (element['username'] === null) {
-      children.push(
+      freeSpaces.push(
         <ParkingSpaceFree
           key={element['space_number']}
           space_number={element['space_number']}
@@ -56,7 +57,7 @@ export const BookingContent = (props: any): JSX.Element => {
       } else {
         releaseAllowed = false;
       }
-      children.push(
+      busySpaces.push(
         <ParkingSpaceBusy
           key={element['space_number']}
           space_number={element['space_number']}
@@ -70,5 +71,13 @@ export const BookingContent = (props: any): JSX.Element => {
     }
   });
 
-    return <ScrollView contentContainerStyle={styles.BookingContent}>{children}</ScrollView>
+    return <View style={styles.BookingContentContainer}>
+		<View style={styles.BookingContentContainerDeeper}>
+			<ScrollView contentContainerStyle={styles.BookingContent}>{freeSpaces}</ScrollView>
+		</View>
+		<View style={styles.BookingContentContainerDeeper}>
+			<ScrollView contentContainerStyle={styles.BookingContent}>{busySpaces}</ScrollView>
+		</View>
+	</View>
+    
 }
