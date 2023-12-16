@@ -1,9 +1,10 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SERVER_IP, SERVER_PORT } from '@env';
 
 export async function SelectSpaceNumber(props: any) {
     axios
-      .get('http://192.168.1.76:9132/bookParkingSpace', {
+      .get('http://' + String(SERVER_IP) + ':' + String(SERVER_PORT) + '/bookParkingSpace', {
         params: {
           space_number: props.space_number,
           username: await AsyncStorage.getItem('username'),
@@ -23,7 +24,7 @@ export async function SelectSpaceNumber(props: any) {
   
   export async function ReleaseSpaceNumber(props: any) {
     axios
-      .get('http://192.168.1.76:9132/releaseParkingSpace', {
+      .get('http://' + String(SERVER_IP) + ':' + String(SERVER_PORT) + '/releaseParkingSpace', {
         params: {
           space_number: props.space_number,
           username: await AsyncStorage.getItem('username'),

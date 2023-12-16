@@ -1,7 +1,7 @@
-import { Text, View, TextInput, TouchableOpacity, Appearance, ScrollView, Dimensions } from 'react-native';
-import { getBookingData } from './BookingContentFunctions';
+import { Text, View, TextInput, TouchableOpacity, Appearance, ScrollView, Dimensions, ActivityIndicator } from 'react-native';
+import { getBookingData } from '../services/BookingContent';
 import { ParkingSpaceFree, ParkingSpaceBusy } from './ParkingSpace';
-import { styles } from './styles';
+import { styles } from '../styles/BookingContent';
 import { useState, useEffect } from 'react';
 
 export const BookingContent = (props: any): JSX.Element => {
@@ -29,8 +29,7 @@ export const BookingContent = (props: any): JSX.Element => {
       }, [dateFormat]);
     
       if (bookingData === null) {
-        // Data is still being fetched
-        return <Text>Loading...</Text>;
+        return <ActivityIndicator size="large" ></ActivityIndicator>;
       }
 
     const freeSpaces: Array<JSX.Element> = [];
@@ -51,7 +50,7 @@ export const BookingContent = (props: any): JSX.Element => {
           date_format={dateFormat}
           isAlreadyBooked={isAlreadyBooked}
           refreshStatus={refreshStatus}
-		  height={spaceHeight}
+		      height={spaceHeight}
         />,
       );
     } else {
@@ -69,7 +68,7 @@ export const BookingContent = (props: any): JSX.Element => {
           surname={element['surname']}
           releaseAllowed={releaseAllowed}
           refreshStatus={refreshStatus}
-		  height={spaceHeight}
+		      height={spaceHeight}
         />,
       );
     }

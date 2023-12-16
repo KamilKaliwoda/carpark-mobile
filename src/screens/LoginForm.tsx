@@ -1,6 +1,6 @@
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
-import { validateLogin } from './LoginFormFunctions';
+import { styles } from '../styles/LoginForm';
+import { validateLogin } from '../services/LoginForm';
 import { useState } from 'react';
 
 

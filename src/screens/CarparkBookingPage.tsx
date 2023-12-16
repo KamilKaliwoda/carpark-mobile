@@ -1,7 +1,7 @@
 import { Text, View, TextInput, TouchableOpacity, Appearance, ScrollView } from 'react-native';
-import { LogOutUser, GetUserData } from './CarparkBookingPageFunctions';
+import { LogOutUser, GetUserData } from '../services/CarparkBookingPage';
 import { BookingContent } from './BookingContent';
-import { styles } from './styles';
+import { styles } from '../styles/CarparkBookingPage';
 import { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 

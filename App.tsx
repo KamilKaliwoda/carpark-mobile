@@ -1,7 +1,5 @@
-import { Text, View } from 'react-native';
-import { styles } from './app/styles';
-import { CarparkBookingPage } from './app/CarparkBookingPage'
-import { LoginForm } from './app/LoginForm';
+import { CarparkBookingPage } from './src/screens/CarparkBookingPage'
+import { LoginForm } from './src/screens/LoginForm';
 import React, { useState } from 'react';
 
 export default function App() {

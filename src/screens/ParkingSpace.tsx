@@ -1,6 +1,6 @@
 import { Text, View, TextInput, TouchableOpacity, Appearance, ScrollView } from 'react-native';
-import { styles } from './styles';
-import { SelectSpaceNumber, ReleaseSpaceNumber } from './ParkingSpaceFunctions';
+import { styles } from '../styles/ParkingSpace';
+import { SelectSpaceNumber, ReleaseSpaceNumber } from '../services/ParkingSpace';
 
 export const ParkingSpaceFree = (props: any): JSX.Element => {
     if (props.isAlreadyBooked) {
