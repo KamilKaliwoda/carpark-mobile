@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { normalize } from '../utils/fontNormalizer';
 
 export const styles = StyleSheet.create({
     ParkingSpaceFree: { 
@@ -28,7 +29,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     SpaceNumber: {
-        fontSize: 30,
+        fontSize: normalize(30),
         color: 'black',
     },
     BookingButton: {
@@ -51,19 +52,19 @@ export const styles = StyleSheet.create({
         width: '80%',
     },
     BookingButtonText: {
-        fontSize: 20,
+        fontSize: normalize(20),
         color: 'black',
     },
     ReleaseButtonText: {
-        fontSize: 20,
+        fontSize: normalize(20),
         color: 'black',
     },
     Name: {
-        fontSize: 20,
+        fontSize: normalize(20),
         color: 'black',
     },
     Surname: {
-        fontSize: 20,
+        fontSize: normalize(20),
         color: 'black',
     },
   });

@@ -13,7 +13,6 @@ export const styles = StyleSheet.create({
         flexGrow: 1,
         width: '100%',
         backgroundColor: 'darkmagenta',
-        borderColor: 'darkmagenta',
         alignItems: 'center',
         borderRadius: 20,
         padding: 10,

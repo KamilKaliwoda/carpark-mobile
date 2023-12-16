@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
+import { normalize } from '../utils/fontNormalizer';
 
 export const styles = StyleSheet.create({
     LoginButtonText: {
         color: 'purple',
-        fontSize: 20,
+        fontSize: normalize(20),
     },
     BookingContentSection: {
         height: '70%',
@@ -48,7 +49,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '50%',
-        fontSize: 20,
+        fontSize: normalize(20),
         color: 'white',
         textAlign: 'center'
     },

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { normalize } from '../utils/fontNormalizer';
 
 export const styles = StyleSheet.create({
     LoginView: {
@@ -15,18 +16,18 @@ export const styles = StyleSheet.create({
     },
     LoginTextInput: {
         backgroundColor: 'white',
-        fontSize: 15,
+        fontSize: normalize(15),
         height: '15%',
         borderRadius: 10,
     },
     LoginTitleText: {
         color: 'white',
-        fontSize: 30,
+        fontSize: normalize(30),
         padding: 20,
         marginTop: 50,
     },
     LoginNormalText: {
-        fontSize: 20,
+        fontSize: normalize(20),
         color: 'white',
         height: '10%',
     },
@@ -39,10 +40,10 @@ export const styles = StyleSheet.create({
     },
     LoginButtonText: {
         color: 'purple',
-        fontSize: 20,
+        fontSize: normalize(20),
     },
     text: {
-        fontSize: 40,
+        fontSize: normalize(40),
     },
   });
   
