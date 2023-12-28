@@ -5,6 +5,7 @@ import { styles } from '../styles/BookingContent';
 import { useState, useEffect } from 'react';
 
 export const BookingContent = (props: any): JSX.Element => {
+    const refreshBookingContent = props.refreshBookingContent;
     const datetimeFormat = props.selectedDate;
     const day = datetimeFormat.getDate().toString().padStart(2, '0');
     const month = (datetimeFormat.getMonth() + 1).toString().padStart(2, '0');
@@ -26,7 +27,7 @@ export const BookingContent = (props: any): JSX.Element => {
           .catch((error) => {
             console.error(error);
           });
-      }, [dateFormat]);
+      }, [dateFormat, refreshBookingContent]);
     
       if (bookingData === null) {
         return <ActivityIndicator size="large" ></ActivityIndicator>;
@@ -47,6 +48,7 @@ export const BookingContent = (props: any): JSX.Element => {
         <ParkingSpaceFree
           key={element['space_number']}
           space_number={element['space_number']}
+          type={element['type']}
           date_format={dateFormat}
           isAlreadyBooked={isAlreadyBooked}
           refreshStatus={refreshStatus}
@@ -63,6 +65,7 @@ export const BookingContent = (props: any): JSX.Element => {
         <ParkingSpaceBusy
           key={element['space_number']}
           space_number={element['space_number']}
+          type={element['type']}
           date_format={dateFormat}
           name={element['name']}
           surname={element['surname']}

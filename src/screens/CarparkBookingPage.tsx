@@ -10,6 +10,7 @@ export const CarparkBookingPage = (props: any): JSX.Element => {
     const [userData, setUserData] = useState<string>('');
     const [isDatepickerVisible, showDatepicker] = useState<boolean>(true);
     const [selectedDate, setDate] = useState<any | null>(new Date());
+    const [refreshBookingContent, setRefreshBookingContent] = useState<boolean>(true);
     Appearance.setColorScheme('dark');
     GetUserData(setUserData);
     const start_date = new Date();
@@ -19,9 +20,7 @@ export const CarparkBookingPage = (props: any): JSX.Element => {
     oldDate.setDate(oldDate.getDate() - 14);
 
     const refreshData = () => {
-        const validDate = selectedDate;
-        setDate(oldDate);
-        setDate(validDate);
+        setRefreshBookingContent(prevState => !prevState);
       };
 
     const onChange = (event, selectedDate) => {
@@ -62,7 +61,7 @@ export const CarparkBookingPage = (props: any): JSX.Element => {
                 </View>
             </View>
             <View style={styles.BookingContentSection}>
-                <BookingContent selectedDate={selectedDate} currentUsername={props.username} refreshData={refreshData} />
+                <BookingContent selectedDate={selectedDate} currentUsername={props.username} refreshData={refreshData} refreshBookingContent={refreshBookingContent} />
             </View>
         </View>
     );

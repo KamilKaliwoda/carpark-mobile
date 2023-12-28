@@ -29,6 +29,7 @@ export async function SelectSpaceNumber(props: any) {
           space_number: props.space_number,
           username: await AsyncStorage.getItem('username'),
           selected_date: props.date_format,
+          type: props.type,
         },
       })
       .then(() => {
