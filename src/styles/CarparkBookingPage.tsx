@@ -60,5 +60,17 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    DatepickerButton: {
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%', 
+        width: '40%',
+        borderRadius: 15,
+    },
+    DatepickerText: {
+        fontSize: normalize(20),
+        color: 'darkmagenta',
+    },
   });
   

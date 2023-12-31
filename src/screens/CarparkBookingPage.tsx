@@ -1,4 +1,4 @@
-import { Text, View, TextInput, TouchableOpacity, Appearance, ScrollView } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, Appearance, ScrollView, Platform } from 'react-native';
 import { LogOutUser, GetUserData } from '../services/CarparkBookingPage';
 import { BookingContent } from './BookingContent';
 import { styles } from '../styles/CarparkBookingPage';
@@ -7,8 +7,14 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 
 
 export const CarparkBookingPage = (props: any): JSX.Element => {
+    let datepickerVisibleOnLoad: boolean;
+    if (Platform.OS === 'ios') {
+      datepickerVisibleOnLoad = true;
+    } else {
+      datepickerVisibleOnLoad = false;
+    }
     const [userData, setUserData] = useState<string>('');
-    const [isDatepickerVisible, showDatepicker] = useState<boolean>(true);
+    const [isDatepickerVisible, showDatepicker] = useState<boolean>(datepickerVisibleOnLoad);
     const [selectedDate, setDate] = useState<any | null>(new Date());
     const [refreshBookingContent, setRefreshBookingContent] = useState<boolean>(true);
     Appearance.setColorScheme('dark');
@@ -30,10 +36,13 @@ export const CarparkBookingPage = (props: any): JSX.Element => {
     
     const hideDatepicker = () => {
         showDatepicker(false);
-        setTimeout(() => {
+        if (Platform.OS === 'ios') {
+          setTimeout(() => {
             showDatepicker(true);
-            }, 10);
+          }, 10);
+        }
     }
+
 
 
     return (
@@ -48,6 +57,11 @@ export const CarparkBookingPage = (props: any): JSX.Element => {
                     <Text style={styles.BookingUserInfo}>{userData}</Text>
                 </View>
                 <View style={styles.BookingDatepickerSection}>
+                    {Platform.OS !== 'ios' && (
+                      <TouchableOpacity style={styles.DatepickerButton} onPress={() => showDatepicker(true)}>
+                      <Text style={styles.DatepickerText}>Show datepicker</Text>
+                      </TouchableOpacity>
+                    )}
                     {isDatepickerVisible && (
                         <DateTimePicker
                             value={selectedDate}

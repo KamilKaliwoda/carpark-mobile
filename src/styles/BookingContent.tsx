@@ -20,8 +20,8 @@ export const styles = StyleSheet.create({
         paddingBottomE: 20,
         borderWidth: 10,
         borderColor: 'darkorchid',
-        rowGap: '15%',
-        columnGap: '15%',
+        rowGap: 15,
+        columnGap: 15,
     },
   });
   
